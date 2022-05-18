@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
@@ -12,25 +13,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-    var obrazek = 1;
+        var obrazek = 1;
         findViewById<Button>(R.id.btn_p).setOnClickListener {
-            if(obrazek == 1)
-                obrazek = 4;
+            if (obrazek == 1)
+                obrazek = 5;
             else
                 obrazek -= 1;
-            if(obrazek == 1 )
+            if (obrazek == 1)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.dom);
-            else if(obrazek == 2 )
+            else if (obrazek == 2)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.auto);
-            else if(obrazek == 3 )
+            else if (obrazek == 3)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.pies);
-            else if(obrazek == 4 )
+            else if (obrazek == 4)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.kot);
-            else if(obrazek == 5)
+            else if (obrazek == 5)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.resource_super);
         }
         findViewById<Button>(R.id.btn_n).setOnClickListener {
-            if (obrazek == 4)
+            if (obrazek == 5)
                 obrazek = 1;
             else
                 obrazek += 1;
@@ -47,18 +48,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         val niewidzialnosc = findViewById<CheckBox>(R.id.check_w)
+        val przezroczystosc = findViewById<CheckBox>(R.id.check_p)
+
         niewidzialnosc.setOnClickListener {
-            if(niewidzialnosc.isChecked)
-            {
+            if (niewidzialnosc.isChecked) {
                 findViewById<ImageView>(R.id.obrazek).visibility = View.INVISIBLE
-            }
-            else
-            {
+            } else {
                 findViewById<ImageView>(R.id.obrazek).visibility = View.VISIBLE
             }
         }
-    }
+
+        val zmiana = findViewById<Button>(R.id.zmiana)
+        val wartosc = findViewById<EditText>(R.id.wartosc)
+        if(przezroczystosc.isChecked)
+        {
+            var przezroczystosc = findViewById<EditText>(R.id.wartosc).text;
+            findViewById<ImageView>(R.id.obrazek).alpha = przezroczystosc.toString().toFloat();
+                }
+            }
 
 
-}
+
+
+        }
+
 
