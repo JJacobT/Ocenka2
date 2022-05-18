@@ -26,8 +26,23 @@ class MainActivity : AppCompatActivity() {
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.kot);
             else if(obrazek == 5)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.resource_super);
-
-
+        }
+        findViewById<Button>(R.id.btn_n).setOnClickListener {
+            if (obrazek == 4)
+                obrazek = 1;
+            else
+                obrazek += 1;
+            if (obrazek == 1)
+                findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.dom);
+            else if (obrazek == 2)
+                findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.auto);
+            else if (obrazek == 3)
+                findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.pies);
+            else if (obrazek == 4)
+                findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.kot);
+            else if (obrazek == 5)
+                findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.resource_super);
         }
     }
-}
+}//
+
