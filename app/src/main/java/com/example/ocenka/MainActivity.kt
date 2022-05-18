@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
     var obrazek = 1;
         findViewById<Button>(R.id.btn_p).setOnClickListener {
             if(obrazek == 1)
@@ -43,6 +45,20 @@ class MainActivity : AppCompatActivity() {
             else if (obrazek == 5)
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.resource_super);
         }
+
+        val niewidzialnosc = findViewById<CheckBox>(R.id.check_w)
+        niewidzialnosc.setOnClickListener {
+            if(niewidzialnosc.isChecked)
+            {
+                findViewById<ImageView>(R.id.obrazek).visibility = View.INVISIBLE
+            }
+            else
+            {
+                findViewById<ImageView>(R.id.obrazek).visibility = View.VISIBLE
+            }
+        }
     }
-}//
+
+
+}
 
