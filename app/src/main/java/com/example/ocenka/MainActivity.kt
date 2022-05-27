@@ -3,20 +3,20 @@ package com.example.ocenka
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.ImageView
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val nazwa = findViewById<TextView>(R.id.textView2)
+
         var obrazek = 1;
         findViewById<Button>(R.id.btn_p).setOnClickListener {
             if (obrazek == 1)
                 obrazek = 5;
+
             else
                 obrazek -= 1;
             if (obrazek == 1)
@@ -47,29 +47,30 @@ class MainActivity : AppCompatActivity() {
                 findViewById<ImageView>(R.id.obrazek).setImageResource(R.drawable.resource_super);
         }
 
-        val niewidzialnosc = findViewById<CheckBox>(R.id.check_w)
-        val przezroczystosc = findViewById<CheckBox>(R.id.check_p)
 
-        niewidzialnosc.setOnClickListener {
-            if (niewidzialnosc.isChecked) {
-                findViewById<ImageView>(R.id.obrazek).visibility = View.INVISIBLE
+        val obrazekid = findViewById<ImageView>(R.id.obrazek)
+        val zaznNiewidzialnosci = findViewById<CheckBox>(R.id.check_w)
+        val zaznPrzezroczystosci = findViewById<CheckBox>(R.id.check_p)
+        val wartoscPrzezroczystosci = findViewById<EditText>(R.id.wartosc)
+        val przeroczystoscButton = findViewById<Button>(R.id.btn_p)
+
+        zaznNiewidzialnosci.setOnClickListener {
+            if (zaznNiewidzialnosci.isChecked) {
+                obrazekid.visibility = View.INVISIBLE
             } else {
-                findViewById<ImageView>(R.id.obrazek).visibility = View.VISIBLE
+                obrazekid.visibility = View.VISIBLE
             }
         }
-
-        val zmiana = findViewById<Button>(R.id.zmiana)
-        val wartosc = findViewById<EditText>(R.id.wartosc)
-        if(przezroczystosc.isChecked)
-        {
-            var przezroczystosc = findViewById<EditText>(R.id.wartosc).text;
-            findViewById<ImageView>(R.id.obrazek).alpha = przezroczystosc.toString().toFloat();
-                }
-            }
+        zaznPrzezroczystosci.setOnClickListener {
+            wartoscPrzezroczystosci.isEnabled = zaznPrzezroczystosci.isChecked
+        }
+        przeroczystoscButton.setOnClickListener {
+            val przezroczystoscLiczba = wartoscPrzezroczystosci.text.toString().toFloat()
+            obrazekid.alpha = przezroczystoscLiczba
+        }
 
 
-
-
+    }
         }
 
 
